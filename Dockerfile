@@ -24,3 +24,5 @@ RUN docker-php-ext-install pdo_pgsql intl pdo_mysql mbstring exif pcntl bcmath o
         postgresql-client-15 postgresql-client-16 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
+COPY config.json /docker-entrypoint.d/config.json
