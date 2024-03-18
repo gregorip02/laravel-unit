@@ -1,6 +1,6 @@
 FROM unit:php8.2
 
-WORKDIR /var/www/app/
+WORKDIR /var/www/html/
 
 # Install server dependencies
 RUN apt-get update \
