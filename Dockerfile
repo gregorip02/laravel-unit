@@ -4,11 +4,11 @@ WORKDIR /var/www/html/
 
 # Install server dependencies
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends lsb-release gnupg zip unzip curl git openssl openssh-client supervisor \
-        libpng-dev libonig-dev libxml2-dev libpq-dev
-
-# Install server dependencies
-RUN docker-php-ext-install pdo_pgsql intl pdo_mysql mbstring exif pcntl bcmath opcache \
+    && apt-get install -y --no-install-recommends lsb-release gnupg \
+        zip unzip curl git openssl openssh-client supervisor \
+        libpng-dev libonig-dev libxml2-dev libpq-dev \
+    # Install PHP dependencies
+    && docker-php-ext-install pdo_pgsql intl pdo_mysql mbstring exif pcntl bcmath opcache \
     # add postgresql repository
     && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /etc/apt/trusted.gpg.d/postgres.gpg \
     && sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' \
